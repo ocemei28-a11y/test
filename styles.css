@@ -43,7 +43,8 @@ body {
 
 
 .app {
-  max-width: 430px;
+  width: 100%;
+      height: 100%;
   margin: 0 auto;
   background: #fff;
 
@@ -485,8 +486,8 @@ h3 {
 
 /* PHONE CONTAINER */
 #homepage .app {
-  width: 390px;
-  height: 100vh;
+  width: 100%;
+      height: 100%;
   background: #eef3f6;
   position: relative; /* important for absolute positioning */
   overflow: hidden;
@@ -703,8 +704,8 @@ h3 {
 
     /* phone frame */
     #demerit .app {
-      width: 390px;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       margin: 0 auto;
       background: #fff;
       position: relative;
@@ -834,8 +835,8 @@ h3 {
 
     /* phone container */
     #vehicle .app {
-      width: 390px;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       margin: 0 auto;
       background: #fff;
       position: relative;
@@ -943,8 +944,8 @@ h3 {
     }
 
     #vehicles .app {
-      width: 390px;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       margin: 0 auto;
       background: #f2f4f7;
       position: relative;
@@ -1065,8 +1066,8 @@ h3 {
     }
 
     #payment .app {
-      width: 390px;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       margin: 0 auto;
       background: #f2f4f7;
       position: relative;
@@ -1191,8 +1192,8 @@ h3 {
     }
 
     #profile .app {
-      width: 390px;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       margin: 0 auto;
       background: #f2f4f7;
       position: relative;
