@@ -819,9 +819,10 @@
         </div>
       </div>
 
-      <div class="expires">
-        QR expires <span id="timer">01:57</span>
-      </div>
+      <div id="overlay"></div>
+<div class="expires">
+  QR expires <span id="timer">02:00</span>
+</div>
 
       <div class="desc">
         By presenting this QR code you consent to share some or all of your driver licence information,
@@ -842,60 +843,80 @@
 
   <script>
   // start at 2:00
-  let seconds = 2 * 60;
-  const el = document.getElementById("timer");
+ <script>
+let seconds = 120;
+let timerStarted = false;
+let interval = null;
 
-  function render() {
-    const m = String(Math.floor(seconds / 60)).padStart(2, "0");
-    const s = String(seconds % 60).padStart(2, "0");
-    el.textContent = `${m}:${s}`;
-  }
+function render() {
+  const el = document.getElementById("timer");
+  if (!el) return;
+
+  const m = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const s = String(seconds % 60).padStart(2, "0");
+  el.textContent = `${m}:${s}`;
+}
+
+function startTimer() {
+  if (timerStarted) return;
+  timerStarted = true;
+
+  interval = setInterval(() => {
+    if (seconds > 0) seconds--;
+    render();
+  }, 1000);
+}
+
+function resetQR() {
+  seconds = 120;
+  timerStarted = false;
+
+  if (interval) clearInterval(interval);
+  interval = null;
 
   render();
+}
 
-  let timerStarted = false;
+function showPage(pageId) {
+  const pages = document.querySelectorAll(".page");
+  pages.forEach(p => p.style.display = "none");
 
-  function startTimer() {
-    if (timerStarted) return;
-    timerStarted = true;
+  const page = document.getElementById(pageId);
+  if (!page) return;
 
-    setInterval(() => {
-      if (seconds > 0) seconds--;
-      render();
-    }, 1000);
+  page.style.display = "block";
+
+  // 🔥 QR LOGIC ONLY RUNS HERE
+  if (pageId === "qr") {
+    resetQR();
+
+    const overlay = document.getElementById("overlay");
+    const expires = document.querySelector(".expires");
+
+    if (overlay) {
+      overlay.style.display = "block";
+      overlay.style.opacity = "1";
+    }
+
+    if (expires) expires.style.opacity = "0";
+
+    setTimeout(() => {
+      if (overlay) overlay.style.opacity = "0";
+
+      setTimeout(() => {
+        if (overlay) overlay.style.display = "none";
+        if (expires) expires.style.opacity = "1";
+
+        startTimer();
+      }, 400);
+
+    }, 1500);
   }
+}
 
- const overlay = document.getElementById("overlay");
-const expires = document.querySelector(".expires");
-
-setTimeout(() => {
-  overlay.style.opacity = "0";
-
-  setTimeout(() => {
-    overlay.style.display = "none";
-
-    // show timer text
-    expires.style.opacity = "1";
-
-    startTimer(); // start countdown AFTER showing
-  }, 400);
-
-}, 1500);
-
-  // close button routing
-  const params = new URLSearchParams(window.location.search);
-  const from = params.get("from");
-  const closeBtn = document.getElementById("closeBtn");
-
-  if (from === "permit") {
-    closeBtn.href = "index.html";
-  } else if (from === "identity") {
-    closeBtn.href = "identity.html";
-  } else if (from === "age") {
-    closeBtn.href = "age.html";
-  } else {
-    closeBtn.href = "index.html";
-  }
+// default page
+showPage("home");
+</script>
 </script>
 </div>
 
