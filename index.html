@@ -17,7 +17,7 @@
     <div class="title">View details</div>
   </header>
 
- <div class="refresh" id="lastRefreshed"></div>
+ <div class="refresh lastRefreshed"></div>
 
 
   <!-- RED LICENCE BAR -->
@@ -34,7 +34,7 @@
 
   <!-- IMAGE SECTION (REPLACES GREEN BACKGROUND) -->
   <div class="image-section qr-wrap">
-  <img src="IMG_1166.png" alt="Licence QR Section">
+  <img src="lachie.png" alt="Licence QR Section">
 
   <!-- clickable area on top of the screenshot button -->
   <button class="qr-hotspot" onclick="showPage('qr')">
@@ -55,7 +55,7 @@
   <!-- DETAILS -->
   <div class="details">
 
-  <h2>JONTHAN F SAWYER</h2>
+  <h2>LACHLAN J SMALL</h2>
 
   <div class="divider"></div>
 
@@ -68,7 +68,7 @@
     </div>
     <div>
       <span>Expiry</span>
-      <strong>12 Aug 2035</strong>
+      <strong>29 Apr 2035</strong>
     </div>
   </div>
 
@@ -87,7 +87,7 @@
     </div>
     <div>
       <span>Date of birth</span>
-      <strong>07 April 2008</strong>
+      <strong>10 Jul 2007</strong>
     </div>
   </div>
 
@@ -95,8 +95,8 @@
 
   <div class="single">
     <span>Address</span>
-    <strong>109 LOWER DANDENONG RD</strong>
-    <strong>MENTONE VIC 3194</strong>
+    <strong>132 BAY RD</strong>
+    <strong>SANDRINGHAM VIC 3191</strong>
   </div>
 
 <div class="divider"></div>
@@ -104,7 +104,7 @@
 
   <div class="single">
   <span>Signature</span>
-  <img src="signature.png" alt="Driver Signature" class="signature-image" />
+  <img src="signlachie.jpg" alt="Driver Signature" class="signature-image" />
 </div>
 
 
@@ -134,17 +134,17 @@
 
   <div class="cell">
     <span>Issue date</span>
-    <strong>12 Aug 2025</strong>
+    <strong>14 May 2025</strong>
   </div>
 
   <div class="cell">
     <span>P1 end date</span>
-    <strong>11 Aug 2026</strong>
+    <strong>13 May 2026</strong>
   </div>
   
   <div class="cell">
     <span>Expiry</span>
-    <strong>12 Aug 2029</strong>
+    <strong>14 May 2035</strong>
   </div>
 </div>
 
@@ -212,7 +212,7 @@
       <div class="title">View details</div>
     </header>
 
-    <div class="refresh" id="lastRefreshed"></div>
+    <div class="refresh lastRefreshed"></div>
 
     <div class="licence-bar">
       <div>
@@ -225,7 +225,7 @@
     </div>
 
    <div class="image-section qr-wrap">
-  <img src="IMG_1166.png" alt="Licence QR Section">
+  <img src="lachie.png" alt="Licence QR Section">
 
   <!-- clickable area on top of the screenshot button -->
  <button class="qr-hotspot" onclick="showPage('qr')">
@@ -250,21 +250,21 @@
 
 
     <div class="details">
-      <h2>JONTHAN F SAWYER</h2>
+      <h2>LACHLAN J SMALL</h2>
 
       <div class="divider"></div>
 
       <div class="single">
         <span>Address</span>
-        <strong>109 LOWER DANDENONG RD</strong>
-        <strong>MENTONE VIC 3194</strong>
+        <strong>132 BAY RD</strong>
+        <strong>SANDRINGHAM VIC 3191</strong>
       </div>
 
       <div class="divider"></div>
 
       <div class="single">
         <span>Signature</span>
-        <img src="signature.png" alt="Driver Signature" class="signature-image" />
+        <img src="signlachie.jpg" alt="Driver Signature" class="signature-image" />
       </div>
     </div> <!-- ✅ close .details -->
 
@@ -288,7 +288,7 @@
     </header>
 
     <!-- REFRESH -->
-    <div class="refresh" id="lastRefreshed">Last refreshed: —</div>
+    <div class="refresh lastRefreshed"></div>
 
     <!-- ✅ USE YOUR BANNER + PHOTO EXACTLY -->
     <!-- RED LICENCE BAR -->
@@ -305,7 +305,7 @@
 
     <!-- IMAGE SECTION (REPLACES GREEN BACKGROUND) -->
    <div class="image-section qr-wrap">
-  <img src="IMG_1166.png" alt="Licence QR Section">
+  <img src="lachie.png" alt="Licence QR Section">
 
   <!-- clickable area on top of the screenshot button -->
   <button class="qr-hotspot" onclick="showPage('qr')">
@@ -357,7 +357,7 @@
 
  <div class="header">
   <img src="vicroadlogo.png" alt="Profile" class="header-img">
-  <h2>Hi Jonathan</h2>
+  <h2>Hi Lachlan</h2>
 </div>
 
 
@@ -813,11 +813,12 @@
       <div class="qr-wrap">
         <div class="qr">
           <img src="IMG_1375.jpeg" alt="QR Code" id="qrImg">
+
           <div class="overlay" id="overlay">
             <div class="loader"></div>
           </div>
         </div>
-      </div>
+        </div>
 
       <div id="overlay"></div>
 <div class="expires">
@@ -843,7 +844,8 @@
 
   <script>
   // start at 2:00
- <script>
+  
+ 
 let seconds = 120;
 let timerStarted = false;
 let interval = null;
@@ -877,20 +879,61 @@ function resetQR() {
   render();
 }
 
+function updateRefreshTime() {
+  const now = new Date();
+  const formatted = now.toLocaleString();
+
+  document.querySelectorAll(".lastRefreshed").forEach(el => {
+    el.textContent = "Last refreshed: " + formatted;
+  });
+}
+
+function updateRefreshTime() {
+  const now = new Date();
+
+  const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  const day = days[now.getDay()];
+  const date = String(now.getDate()).padStart(2, "0");
+  const month = months[now.getMonth()];
+  const year = now.getFullYear();
+
+  let hours = now.getHours();
+  let minutes = String(now.getMinutes()).padStart(2, "0");
+
+  const ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12 || 12;
+
+  const formatted = `${day} ${date} ${month} ${year} ${hours}:${minutes}${ampm}`;
+
+  document.querySelectorAll(".lastRefreshed").forEach(el => {
+    el.textContent = "Last refreshed: " + formatted;
+  });
+}
+
 function showPage(pageId) {
   const pages = document.querySelectorAll(".page");
   pages.forEach(p => p.style.display = "none");
 
   const page = document.getElementById(pageId);
   if (!page) return;
+page.style.display = "block";
+  
+page.style.display = "block";
 
-  page.style.display = "block";
+updateRefreshTime();
 
   // 🔥 QR LOGIC ONLY RUNS HERE
   if (pageId === "qr") {
     resetQR();
-
+    
     const overlay = document.getElementById("overlay");
+
+overlay.style.position = "absolute";
+overlay.style.left = "115px";  // X position
+overlay.style.top = "115px";   // Y position
+
     const expires = document.querySelector(".expires");
 
     if (overlay) {
@@ -907,37 +950,23 @@ function showPage(pageId) {
         if (overlay) overlay.style.display = "none";
         if (expires) expires.style.opacity = "1";
 
-        startTimer();
-      }, 400);
+        // ✅ THIS is the moment blur gets removed
+    const qr = document.querySelector(".qr");
+    if (qr) qr.classList.add("unblur");
 
-    }, 1500);
+
+        startTimer();
+      }, 200);
+
+    }, 3000);
   }
 }
+
 
 // default page
 showPage("home");
 </script>
 </script>
 </div>
-
-
-
-  
-
-
-  <script>
-    function showPage(pageId) {
-      // hide all pages
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.style.display = 'none');
-
-      // show selected page
-      document.getElementById(pageId).style.display = 'block';
-    }
-
-    // show default page
-    showPage('home');
-  </script>
-
 </body>
 </html>
