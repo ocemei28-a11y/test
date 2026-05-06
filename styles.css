@@ -11,6 +11,10 @@ html, body {
   touch-action: pan-y;
 }
 
+  #home, #identity, #age {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   background: #ffffff;
