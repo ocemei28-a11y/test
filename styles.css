@@ -163,6 +163,11 @@ body {
       color: white;
     }
 
+button.active {
+  background-color: black;
+  color: white;
+}
+
 
 /* DETAILS */
 .details {
@@ -411,8 +416,8 @@ h3 {
   position: absolute;
 
   /* 👇 move these until it sits on top of the screenshot button */
-  left: 58%;
-  top: 65%;
+  left: 57.5%;
+  top: 70%;
   width: 32%;
   height: 14%;
 
@@ -1385,25 +1390,36 @@ h3 {
       box-shadow:0 2px 6px rgba(0,0,0,0.08);
     }
 
-    #qr .qr img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
+    #qr .qr img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+
+  filter: blur(6px);
+}
+
+#qr .qr.unblur img {
+  filter: blur(0px);
+}
 
     /* overlay blur + fade */
-    #qr .overlay{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(255,255,255,0.7);
-      backdrop-filter:blur(6px);
-      z-index:2;
-      transition:opacity 0.4s ease;
-    }
+    #qr .overlay {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+
+  opacity:1;
+  transition: opacity 0.6s ease;
+}
+
+#qr .overlay.hide {
+  opacity:0;
+  pointer-events:none;
+}
 
     /* green circle */
     #qr .loader{
